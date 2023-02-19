@@ -15,7 +15,7 @@ const Leaderboard: FC<Props> = (props): JSX.Element => {
   }, []);
 
   const getLeaderboard = () => {
-    fetch("http://localhost:3000/api/leaderboard")
+    fetch(`${process.env.REACT_APP_API_URL}/api/leaderboard`)
       .then(res => res.json())
       .then(res => props.setLeaderboard(res))
   }
