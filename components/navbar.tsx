@@ -3,7 +3,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from "next/link";
 
-function classNames(...classes) {
+function classNames(...classes: object[]) {
   return classes.filter(Boolean).join(' ')
 }
 
