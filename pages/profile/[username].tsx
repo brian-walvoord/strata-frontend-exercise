@@ -2,17 +2,32 @@ import { FC } from "react"
 import Link from "next/link";
 
 
-const User: FC<SelectedUser> = (props) => {
+const User: FC<Props> = (props) => {
+
+  const toggleLike = (user: string) => {
+    if (props.favorites[user as keyof Favorites]) {
+      props.setFavorites({ ...props.favorites, [user]: false })
+    } else {
+      props.setFavorites({ ...props.favorites, [user]: true })
+    }
+  }
 
   return (
     <>
       <div className="w-full h-80 flex flex-col items-center justify-center space-y-12 mt-20 text-black">
         <h1 className="text-4xl font-bold">{props.selectedUser.username}</h1>
         <img className="h-40 w-40 rounded-full" src={props.selectedUser.profileImage}></img>
-        <button className="py-2 px-4 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Like</button>
-        <Link href="/leaderboard">
-          <button className="py-2 px-4 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">Back</button>
-        </Link>
+        <div className="flex">
+          <button onClick={() => toggleLike(props.selectedUser.username)} className="py-2 mx-4 px-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">{props.favorites[props.selectedUser.username as keyof Favorites] ? "Unlike" : "Like"}</button>
+          <Link href="/leaderboard">
+            <button className="py-2 mx-4 px-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Back</button>
+          </Link>
+        </div>
+        <div className={props.favorites[props.selectedUser.username as keyof Favorites] ? "" : "invisible"}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-10 h-10 !my-0">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+          </svg>
+        </div>
       </div>
     </>
   )

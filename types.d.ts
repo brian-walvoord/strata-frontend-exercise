@@ -5,8 +5,17 @@ interface UserDetails {
 }
 
 interface SelectedUser {
-  selectedUser: UserDetails,
-  setSelectedUser: Function
+  selectedUser: UserDetails;
+  setSelectedUser: Function;
+}
+
+interface Props {
+  selectedUser: UserDetails;
+  setSelectedUser: Function;
+  favorites: Favorites;
+  setFavorites: Function;
+  leaderboard: LeaderboardData;
+  setLeaderboard: Function;
 }
 
 type LeaderboardData = {
@@ -21,3 +30,7 @@ type ProfileData = {
   email: string;
   birthday: string;
 };
+
+type Favorites = {
+  user: boolean;
+}
