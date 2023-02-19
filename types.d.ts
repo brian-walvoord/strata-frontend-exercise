@@ -4,6 +4,11 @@ interface UserDetails {
   score: number;
 }
 
+interface SelectedUser {
+  selectedUser: UserDetails,
+  setSelectedUser: Function
+}
+
 type LeaderboardData = {
   leaderboard: UserDetails[];
 };

@@ -1,9 +1,7 @@
-import { FC } from "react"
-import { useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react"
+import Link from "next/link"
 
-
-
-const Leaderboard: FC = () => {
+const Leaderboard: FC<SelectedUser> = (props): JSX.Element => {
   const [leaderboard, setLeaderboard] = useState<LeaderboardData>({ leaderboard: [] });
 
   useEffect(() => {
@@ -28,19 +26,19 @@ const Leaderboard: FC = () => {
     const sortedArr = leaderboard.leaderboard.sort((a, b) => b.score - a.score);
     return sortedArr.map((user, index) => {
       return (
-        <a className="flex w-50% space-x-3" key={index} href={`/profile/${user.username}`}>
+        <Link className="cursor-pointer flex w-full h-30 ring-1 ring-black justify-center items-center space-x-6 space-y-3 bg-gray-200 hover:bg-gray-300" key={index} href={`/profile/${user.username}`} onClick={() => props.setSelectedUser(user)}>
           <p className="w-10">{user.score}</p>
-          <img className="h-6 w-6" src={user.profileImage}></img>
-          <p className="w-20">{user.username}</p>
-          <p className="w-10">Liked?</p>
-        </a>
+          <img className="h-20 w-20 !my-2 rounded-full" src={user.profileImage}></img>
+          <p className="w-20 !my-0">{user.username}</p>
+          <p className="w-15 !my-0">Liked?</p>
+        </Link>
       )
     })
   }
 
   return (
     <>
-      <div className="w-full flex flex-col items-center justify-center text-black">
+      <div className="w-1/2 shadow-2xl flex flex-col mt-10 items-center justify-center mx-auto text-black">
         {leaderboard.leaderboard && generateLeaderboard()}
       </div>
     </>)
