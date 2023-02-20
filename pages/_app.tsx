@@ -11,7 +11,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className='bg-white min-h-screen'>
       <Navbar />
-      <Component {...pageProps} selectedUser={selectedUser} setSelectedUser={setSelectedUser} favorites={favorites} setFavorites={setFavorites} leaderboard={leaderboard} setLeaderboard={setLeaderboard} />
+      <Component {...pageProps}
+        selectedUser={selectedUser}
+        setSelectedUser={setSelectedUser}
+        favorites={favorites}
+        setFavorites={setFavorites}
+        leaderboard={leaderboard}
+        setLeaderboard={setLeaderboard}
+      />
     </div>)
 }
 
