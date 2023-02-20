@@ -6,9 +6,9 @@ const User: FC<Props> = (props) => {
 
   const toggleLike = (user: string) => {
     if (props.favorites[user as keyof Favorites]) {
-      props.setFavorites({ ...props.favorites, [user]: false })
+      props.setFavorites({ ...props.favorites, [user]: false });
     } else {
-      props.setFavorites({ ...props.favorites, [user]: true })
+      props.setFavorites({ ...props.favorites, [user]: true });
     }
   }
 

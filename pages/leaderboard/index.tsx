@@ -17,7 +17,7 @@ const Leaderboard: FC<Props> = (props): JSX.Element => {
   const getLeaderboard = () => {
     fetch(`${process.env.REACT_APP_API_URL}/api/leaderboard`)
       .then(res => res.json())
-      .then(res => props.setLeaderboard(res))
+      .then(res => props.setLeaderboard(res));
   }
 
 
@@ -50,4 +50,4 @@ const Leaderboard: FC<Props> = (props): JSX.Element => {
 }
 
 
-export default Leaderboard
+export default Leaderboard;

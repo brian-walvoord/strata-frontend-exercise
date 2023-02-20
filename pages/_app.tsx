@@ -1,6 +1,6 @@
-import Navbar from '../components/navbar'
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import Navbar from '../components/navbar';
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
 import { useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -22,4 +22,4 @@ function MyApp({ Component, pageProps }: AppProps) {
     </div>)
 }
 
-export default MyApp
+export default MyApp;
