@@ -25,7 +25,12 @@ const Leaderboard: FC<Props> = (props): JSX.Element => {
     const sortedArr = props.leaderboard.leaderboard.sort((a, b) => b.score - a.score);
     return sortedArr.map((user, index) => {
       return (
-        <Link className="cursor-pointer flex w-full px-5 h-30 ring-1 ring-gray-50 ring-black justify-center items-center space-x-10 space-y-3 bg-gray-200 hover:bg-gray-300" key={index} href={`/profile/${user.username}`} onClick={() => props.setSelectedUser(user)}>
+        <Link 
+          className="cursor-pointer flex w-full px-5 h-30 ring-1 ring-gray-50 ring-black justify-center items-center space-x-10 space-y-3 bg-gray-200 hover:bg-gray-300" 
+          key={index} 
+          href={`/profile/${user.username}`} 
+          onClick={() => props.setSelectedUser(user)}
+         >
           <p className="w-10 text-xl">{user.score}</p>
           <img className="h-20 w-20 !my-2 rounded-full" src={user.profileImage}></img>
           <p className="w-24 !my-0 text-xl">{user.username}</p>
